@@ -26,10 +26,15 @@ At the same time it writes the name of the image and the pixel data to a line in
 
 Certain file names are not allowed in Windows, <, >,:, ", /, \, |, ?, *, .
 
-           (Since I use "|" for breaking up the data, I have the next script looking for "rename" when it is the "|" glyph)
+(Since I use "|" for breaking up the data, I have the next script looking for "rename" when it is the "|" glyph)
            
 So you'll have to name these file something diffent temporarily and rename them in the data.txt file before you run the second script .
 
+In the main folder the script will look for all png images in the fontToCreate folder, and convert them to data in the data.txt file
+
+Run with:
+
+           python PngToFontPartI.py
 
 
 PART II
@@ -43,7 +48,7 @@ Usually in \whereverYouInstalledFontForge\FontForgeBuilds\bin
 
 In commandline:
 
-fontforge -lang=py -script \LocationOfThisScript\PngToFontPartII.py
+           fontforge -lang=py -script \FolderLocationOfThisScript\PngToFontPartII.py
 
 
 PngToFontPartII:
@@ -52,7 +57,7 @@ This code looks for an SFD file in the "SfdPath" location.
 
 The script opens up the data.txt file and reads each line which represents 1 glyph.
 
-           (If the name "rename" is found in data.txt, this is the "|" glyph)
+(If the name "rename" is found in data.txt, this is the "|" glyph)
            
 It creates or finds the glyph by the line name and takes the measurement of the glyph given in data.txt,  and fills in each 1 with an appropriately sized square and then overlap is removed.
 
